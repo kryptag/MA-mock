@@ -1,5 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -44,6 +45,7 @@ public class JokeFetcherTest {
     }
 
     @Test
+    @DisplayName("Factory returns objects of isntance IJokeFetcher")
     public void factoryTest() {
         List<IJokeFetcher> result = factory.getJokeFetchers("EduJoke,ChuckNorris,Moma,Tambal");
         assertAll("Checking each iJokeFetcher", () -> {
@@ -55,6 +57,7 @@ public class JokeFetcherTest {
     }
 
     @Test
+    @DisplayName("Checking available types")
     public void getAvailableTypesTest() {
         assertAll("Testing the arraylist has all the types", () -> {
             List<String> list = factory.getAvailableTypes();
@@ -64,6 +67,7 @@ public class JokeFetcherTest {
     }
 
     @Test
+    @DisplayName("Checking String")
     public void isStringValidTest() {
         assertAll("Testing for tokens", () -> {
             factory.getAvailableTypes().forEach(token -> assertTrue(fetch.isStringValid(token)));
@@ -72,6 +76,7 @@ public class JokeFetcherTest {
     }
 
     @Test
+    @DisplayName("Getting Jokes")
     public void getJokesTest() throws JokeException {
         when(dateFormatter.getFormattedDate(any(), any(), any())).thenReturn("Europe/Copenhagen");
         Jokes jokes = fetch.getJokes("EduJoke,ChuckNorris,ChuckNorris,Moma,Tambal", "Europe/Copenhagen", dateFormatter);

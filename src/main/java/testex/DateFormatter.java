@@ -24,26 +24,5 @@ public class DateFormatter implements IDateFormatter {
     return simpleFormat.format(time);
   }
 
-  /**
-   * DO NOT TEST this function as part of the exercise.
-   * It's included only to get a quick way of executing the code
-   * Execute to see available time format strings and responses to calling the single (non-main) public method
-   */
-  public static void main(String[] args) throws JokeException  {
-    
-    for (String str : TimeZone.getAvailableIDs()) {
-      System.out.println(str);
-    }
-    Date time = new Date();
-    String dateTimeFormat = "dd MMM yyyy hh:mm aa";
-    SimpleDateFormat simpleFormat = new SimpleDateFormat(dateTimeFormat);
-    //Executing our public method with a valid String:
-    System.out.println(new DateFormatter().getFormattedDate("Europe/Kiev", simpleFormat, time));
-    
-    System.out.println(new DateFormatter().getFormattedDate("ImNotLegal", simpleFormat, time));
-    
-    
-    
-  }
 
 }
